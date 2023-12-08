@@ -1,0 +1,100 @@
+// CREATE ADMIN
+
+POST http://localhost:5000/development/admin/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "admin@egtisolutions.com",
+    "password": "123"
+}
+
+###
+
+// ADMIN AUTH
+
+POST http://localhost:5000/development/admin/auth HTTP/1.1
+content-type: application/json
+
+{
+    "email": "admin@egtisolutions.com",
+    "password": "123"
+}
+
+###
+
+// CREATE CAR
+
+POST http://localhost:5000/development/car/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVndGlzb2x1dGlvbnMuY29tIiwiaWF0IjoxNzAxOTE1NTAwLCJleHAiOjE3MDI1MjAzMDAsInN1YiI6IjY1NmNkY2MzMGRhYmQzNjRiYWQyYzFjNSJ9.drW2h3WuN-UGA2HukVA09MdtRPZ2YsecHwKR-vebnI0
+
+{
+    "brand": "VOLKSWAGEN",
+    "model": "UP TSI 1.0 5P",
+    "year": 2015,
+    "price": "72.000",
+    "color": "PRETO"
+}
+
+###
+
+// GET ALL CARS
+
+GET http://localhost:5000/development/car/get-all HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVndGlzb2x1dGlvbnMuY29tIiwiaWF0IjoxNzAxOTE1NTAwLCJleHAiOjE3MDI1MjAzMDAsInN1YiI6IjY1NmNkY2MzMGRhYmQzNjRiYWQyYzFjNSJ9.drW2h3WuN-UGA2HukVA09MdtRPZ2YsecHwKR-vebnI0
+
+###
+
+// GET CARS BY ID
+
+POST http://localhost:5000/development/car/get-by-id HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVndGlzb2x1dGlvbnMuY29tIiwiaWF0IjoxNzAxOTE1NTAwLCJleHAiOjE3MDI1MjAzMDAsInN1YiI6IjY1NmNkY2MzMGRhYmQzNjRiYWQyYzFjNSJ9.drW2h3WuN-UGA2HukVA09MdtRPZ2YsecHwKR-vebnI0
+
+{
+    "id": "657138c8878c084c5ee9fb5a"
+}
+
+###
+
+// UPDATE CAR
+
+PUT http://localhost:5000/development/car/update/657138c8878c084c5ee9fb5a HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVndGlzb2x1dGlvbnMuY29tIiwiaWF0IjoxNzAxOTE1NTAwLCJleHAiOjE3MDI1MjAzMDAsInN1YiI6IjY1NmNkY2MzMGRhYmQzNjRiYWQyYzFjNSJ9.drW2h3WuN-UGA2HukVA09MdtRPZ2YsecHwKR-vebnI0
+
+{
+    "id": "657138c8878c084c5ee9fb5a",
+    "color": "LARANJA"
+}
+
+###
+
+// DELETE CAR
+
+DELETE http://localhost:5000/development/car/delete/657137ead06d866a4137a227 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVndGlzb2x1dGlvbnMuY29tIiwiaWF0IjoxNzAxOTE1NTAwLCJleHAiOjE3MDI1MjAzMDAsInN1YiI6IjY1NmNkY2MzMGRhYmQzNjRiYWQyYzFjNSJ9.drW2h3WuN-UGA2HukVA09MdtRPZ2YsecHwKR-vebnI0
+
+###
+
+// GENERATE USER SCORE
+
+POST http://localhost:5000/development/lead/generate-score
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVndGlzb2x1dGlvbnMuY29tIiwiaWF0IjoxNzAxOTE1NTAwLCJleHAiOjE3MDI1MjAzMDAsInN1YiI6IjY1NmNkY2MzMGRhYmQzNjRiYWQyYzFjNSJ9.drW2h3WuN-UGA2HukVA09MdtRPZ2YsecHwKR-vebnI0
+
+{
+    "idUser": "656cdcc30dabd364bad2c1c5"
+}
+
+###
+
+// GET USER SCORE
+
+GET http://localhost:5000/development/lead/get-score/656cdcc30dabd364bad2c1c5
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVndGlzb2x1dGlvbnMuY29tIiwiaWF0IjoxNzAxOTE1NTAwLCJleHAiOjE3MDI1MjAzMDAsInN1YiI6IjY1NmNkY2MzMGRhYmQzNjRiYWQyYzFjNSJ9.drW2h3WuN-UGA2HukVA09MdtRPZ2YsecHwKR-vebnI0
+
+###
