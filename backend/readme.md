@@ -1,28 +1,32 @@
-# Api Rest oncarapp
+# Api Rest ONCAR CRM
 
 Instalar dependências
 ```
+# yarn
 yarn install
+
+# npm
+npm i
 ``` 
 
 ### Renomeie o arquivo .exemple para .env
 
 Rodar projeto em modo de desenvolvimento
 ```
-yarn dev 
-```
-Abra outra aba no terminal para rodas os testes 
-```
-yarn test:watch
+# yarn
+yarn dev
+
+# npm
+npm start 
 ```
 
 Projeto desenvolvido em Clean Architecture
 seguindo a estrutura de pastas
 
 Domain - Pasta onde se encontra o núcleo das regras de negócios
- - Contracts -> repository -> utils
- - Entities -> errors -> helpers - entidades.ts
- - UseCases - > Admin -> Car -> Lead
+ - Contracts > repository > utils
+ - Entities > errors > helpers > entidades.ts
+ - UseCases > Admin > Car > Lead
  
 Application - Pasta onde se encontra o núcleo da aplicação que vai tratar as requisições do client
 - Controllers
@@ -31,23 +35,23 @@ Application - Pasta onde se encontra o núcleo da aplicação que vai tratar as 
 - validation
 
 Infrastructure - Pasta onde se encontra conexões externas que são feitas como banco de dados e bibliotecas
-- repository - mongoDb - helpers
+- repository > mongoDb > helpers
 - utils
 
 Main - Pasta onde se encontra o núcleo da aplicação onde é únificado para que se conecte o software
 - adapters
 - config
-- factories - domain - application - infrastructure
+- factories > domain > application > infrastructure
 - middlewares
 - routers
 
 Tests -  Pasta onde está os testes da aplicação
-- application - controllers - validation
-- domain - entities - useCases
+- application > controllers > validation
+- domain > entities > useCases
 - infrastructure
 
-## Observações - 
-Arquitetura focada na separação das dependências,  entre regra de negócios e regras de aplicação, separando os propósitos. 
+## Observações
+Arquitetura focada na separação das dependências, entre regra de negócios e regras de aplicação, separando os propósitos. 
 
 Banco de dados - MongoDb
 com as seguintes Entidades
@@ -69,6 +73,7 @@ type TypeCar = {
   model: string;
   year: string;
   price: string;
+  color: string;
   createdAt: string;
   updatedAt: string;
   deletedAt: string;
@@ -78,10 +83,8 @@ type TypeCar = {
 ```
 type TypeLead = {
   _id: string;
-  idCar: string;
-  name: string;
-  email: string;
-  contact: string;
+  idUser: string;
+  score: number;
   createdAt: string;
   updatedAt: string;
   deletedAt: string;
@@ -91,6 +94,6 @@ type TypeLead = {
 ## Variáveis de Ambiente
 ```
 PORT=5000
-MONGO_URL=mongodb+srv://oncarapp:op6FKV96qSbnsHjQ@cluster0.jrqd3xn.mongodb.net/test
+MONGO_URL=mongodb://localhost:27017/db_name
 TOKEN_KEY=key_oncarapp
 ```
