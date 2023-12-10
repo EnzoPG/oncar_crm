@@ -1,4 +1,4 @@
-# Api Rest oncarapp
+# Api Rest ONCAR CRM
 
 Instalar dependências
 ```
@@ -10,10 +10,6 @@ yarn install
 Rodar projeto em modo de desenvolvimento
 ```
 yarn dev 
-```
-Abra outra aba no terminal para rodas os testes 
-```
-yarn test:watch
 ```
 
 Projeto desenvolvido em Clean Architecture
@@ -47,7 +43,7 @@ Tests -  Pasta onde está os testes da aplicação
 - infrastructure
 
 ## Observações - 
-Arquitetura focada na separação das dependências,  entre regra de negócios e regras de aplicação, separando os propósitos. 
+Arquitetura focada na separação das dependências, entre regra de negócios e regras de aplicação, separando os propósitos. 
 
 Banco de dados - MongoDb
 com as seguintes Entidades
@@ -69,6 +65,7 @@ type TypeCar = {
   model: string;
   year: string;
   price: string;
+  color: string;
   createdAt: string;
   updatedAt: string;
   deletedAt: string;
@@ -78,10 +75,8 @@ type TypeCar = {
 ```
 type TypeLead = {
   _id: string;
-  idCar: string;
-  name: string;
-  email: string;
-  contact: string;
+  idUser: string;
+  score: number;
   createdAt: string;
   updatedAt: string;
   deletedAt: string;
@@ -91,6 +86,6 @@ type TypeLead = {
 ## Variáveis de Ambiente
 ```
 PORT=5000
-MONGO_URL=mongodb+srv://oncarapp:op6FKV96qSbnsHjQ@cluster0.jrqd3xn.mongodb.net/test
+MONGO_URL=mongodb://localhost:27017/db_name
 TOKEN_KEY=key_oncarapp
 ```
