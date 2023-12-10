@@ -6,31 +6,42 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Alert } from '@material-ui/lab';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { userActions } from '../_actions';
 import { history } from '../_helpers';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
 import './login.component.css';
+// Mobile or Desktop
+import isMobile from '../utils/isMobile';
 
 const styles = theme => ({
     root: {
-        display: 'flex',
-        flexWrap: 'wrap',
+        flexGrow: 1,
     },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
     },
+    mainGrid: {
+        marginTop: (isMobile) ? 0 : '15%',
+        height: (isMobile) ? '100vh' : '35vh',
+        width: (isMobile) ? '108vw' : '',
+    },
     textField: {
+        marginBottom: 10,
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
-        width: '50%',
+        width: (isMobile) ? '100%' : '50%',
     },
-    paper: {
+    paperTitle: {
         padding: theme.spacing.unit * 2,
+        textAlign: 'center'
+    },
+    paperBody: {
+        padding: (isMobile) ? 50 : theme.spacing.unit * 2,
         textAlign: 'center',
-        color: theme.palette.text.secondary,
+        marginBottom: 15
     },
     mainContainer: {
         boxShadow: '15px 20px 25px lightgray',
@@ -39,8 +50,9 @@ const styles = theme => ({
         padding: '1em',
     },
     button: {
-        margin: theme.spacing.unit,
         width: '50%',
+        color: 'white',
+        backgroundColor: '#4293f5'
     },
     input: {
         display: 'none',
@@ -94,15 +106,15 @@ class Login extends Component {
         const { classes, loggingIn } = this.props;
 
         return (
-            <div className="login-margin">
-                <Grid container spacing={24}>
-                    <Grid item xs={3}>
-                    </Grid>
-                    <Grid item xs={6} className={classes.mainContainer}>
-                        <Paper className={classes.paper}>
+            <Grid container spacing={3} className={classes.mainGrid}>
+                <Grid item xs={3}>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <Paper elevation={4} style={{ padding: 15 }}>
+                        <Paper className={classes.paperTitle} elevation={0}>
                             <Typography><h1>{'Bem vindo ao CRM!'}</h1></Typography>
                         </Paper>
-                        <Paper className={classes.paper}>
+                        <Paper className={classes.paperBody} elevation={0}>
                             <div>
                                 <TextField
                                     required
@@ -111,8 +123,6 @@ class Login extends Component {
                                     className={classes.textField}
                                     onChange={this.handleChange('email')}
                                 />
-                                <br />
-                                <br />
                                 <TextField
                                     required
                                     label="Senha"
@@ -124,39 +134,39 @@ class Login extends Component {
                                 />
                                 <br />
                                 <br />
-                                <Button variant="contained" color="primary" className={classes.button} onClick={(event) => { this.login() }}>
+                                <Button variant="contained" className={classes.button} onClick={(event) => { this.login() }}>
                                     Login
                                 </Button>
                             </div>
                         </Paper>
-                        {
-                            (this.state.showAlert) && (
-                                <Alert
-                                    severity="error"
-                                    className={classes.alert}
-                                    onClose={() => {
-                                        this.setState({ showAlert: false })
-                                    }}
-                                >
-                                    {this.state.alertMessage}
-                                </Alert>
-                            )
-                        }
-                        {
-                            (loggingIn === false && !this.state.showAlert) && (
-                                <Alert
-                                    severity="error"
-                                    className={classes.alert}
-                                >
-                                    Credenciais inválidas! Tente novamente.
-                                </Alert>
-                            )
-                        }
-                    </Grid>
-                    <Grid item xs={3}>
-                    </Grid>
+                    </Paper>
+                    {
+                        (this.state.showAlert) && (
+                            <Alert
+                                severity="error"
+                                className={classes.alert}
+                                onClose={() => {
+                                    this.setState({ showAlert: false })
+                                }}
+                            >
+                                {this.state.alertMessage}
+                            </Alert>
+                        )
+                    }
+                    {
+                        (loggingIn === false && !this.state.showAlert) && (
+                            <Alert
+                                severity="error"
+                                className={classes.alert}
+                            >
+                                Credenciais inválidas! Tente novamente.
+                            </Alert>
+                        )
+                    }
                 </Grid>
-            </div>
+                <Grid item xs={3}>
+                </Grid>
+            </Grid>
         );
     };
 };

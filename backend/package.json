@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node lib/main/index.js",
+    "start": "ts-node -r tsconfig-paths/register src/main/index.ts",
     "dev": "ts-node-dev -r tsconfig-paths/register --no-notify src/main/index.ts",
     "lint": "eslint --ext .js,.ts .",
     "lint:fix": "npm run lint -- --fix",
@@ -37,7 +37,7 @@
     "@types/jsonwebtoken": "^9.0.2",
     "@types/module-alias": "^2.0.2",
     "@types/mongoose": "^5.11.97",
-    "@types/node": "^20.5.1",
+    "@types/node": "^20.10.4",
     "@types/reflect-metadata": "^0.1.0",
     "babel-plugin-module-resolver": "^5.0.0",
     "eslint": "^8.47.0",
