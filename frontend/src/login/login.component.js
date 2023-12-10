@@ -52,7 +52,6 @@ const styles = theme => ({
     button: {
         width: '50%',
         color: 'white',
-        backgroundColor: '#4293f5'
     },
     input: {
         display: 'none',
@@ -134,7 +133,7 @@ class Login extends Component {
                                 />
                                 <br />
                                 <br />
-                                <Button variant="contained" className={classes.button} onClick={(event) => { this.login() }}>
+                                <Button variant="contained" color="primary" className={classes.button} onClick={(event) => { this.login() }}>
                                     Login
                                 </Button>
                             </div>
